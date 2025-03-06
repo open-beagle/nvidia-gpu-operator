@@ -1,0 +1,27 @@
+From 475a50d9a3f1d8c3bcb575e05ff08397a7999b25 Mon Sep 17 00:00:00 2001
+From: shucheng <shucheng@bd-apaas.com>
+Date: Thu, 6 Mar 2025 18:49:00 +0800
+Subject: [PATCH] beagl
+
+---
+ controllers/object_controls.go | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/controllers/object_controls.go b/controllers/object_controls.go
+index 2b4a9252..beca76e3 100644
+--- a/controllers/object_controls.go
++++ b/controllers/object_controls.go
+@@ -1553,7 +1553,9 @@ func TransformDCGMExporter(obj *appsv1.DaemonSet, config *gpuv1.ClusterPolicySpe
+ 		return err
+ 	}
+ 	obj.Spec.Template.Spec.Containers[0].Image = image
+-
++	// gaoshiyao
++	obj.Spec.Template.Spec.HostIPC = true
++	obj.Spec.Template.Spec.HostPID = true
+ 	// update image pull policy
+ 	obj.Spec.Template.Spec.Containers[0].ImagePullPolicy = gpuv1.ImagePullPolicy(config.DCGMExporter.ImagePullPolicy)
+ 	// set image pull secrets
+-- 
+2.39.5
+
