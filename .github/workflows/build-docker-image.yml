@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD_ALIYUN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./.beagle/dockerfile
