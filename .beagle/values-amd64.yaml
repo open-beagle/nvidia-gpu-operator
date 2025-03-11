@@ -1,0 +1,66 @@
+validator:
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: gpu-operator-validator-v24.9.2
+
+operator:
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: gpu-operator-v24.9.2
+  initContainer:
+    repository: registry.cn-qingdao.aliyuncs.com/wod
+    image: nvidia
+    version: cuda-12.6.3-base-ubi9
+
+driver:
+  enabled: false
+toolkit:
+  enabled: false
+
+devicePlugin:
+  enabled: true
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: k8s-device-plugin-v0.17.0
+
+dcgmExporter:
+  enabled: true
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: dcgm-exporter-3.3.9-3.6.1-ubuntu22.04
+
+gfd:
+  enabled: true
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: k8s-device-plugin-v0.17.0
+
+migManager:
+  enabled: false
+
+nodeStatusExporter:
+  enabled: false
+
+gds:
+  enabled: false
+
+gdrcopy:
+  enabled: false
+
+vgpuManager:
+  enabled: false
+
+vgpuDeviceManager:
+  enabled: false
+
+vfioManager:
+  enabled: false
+
+kataManager:
+  enabled: false
+
+sandboxDevicePlugin:
+  enabled: false
+
+ccManager:
+  enabled: false

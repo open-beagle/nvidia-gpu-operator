@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  build-nvidia-egl:
+  build-gpu-operator:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,12 +45,32 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:v24.9.2
-            registry.cn-qingdao.aliyuncs.com/wod/nvidia-gpu-operator:v24.9.2
+            registry.cn-qingdao.aliyuncs.com/wod/nvidia:gpu-operator-v24.9.2
           platforms: linux/amd64
           build-args: |
             BASE=nvcr.io/nvidia/cuda:12.6.3-base-ubi9
             AUTHOR=${{ github.repository_owner }}
             VERSION=v24.9.2
+
+      - name: gpu-operator-validator
+        run: docker pull nvcr.io/nvidia/cloud-native/gpu-operator-validator:v24.9.2 && \
+        docker tag nvcr.io/nvidia/cloud-native/gpu-operator-validator:v24.9.2 registry.cn-qingdao.aliyuncs.com/wod/nvidia:gpu-operator-validator-v24.9.2 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:gpu-operator-validator-v24.9.2
+
+      - name: cuda
+        run: docker pull nvcr.io/nvidia/cuda:12.6.3-base-ubi9 && \
+        docker tag nvcr.io/nvidia/cuda:12.6.3-base-ubi9 registry.cn-qingdao.aliyuncs.com/wod/nvidia:cuda-12.6.3-base-ubi9 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:cuda-12.6.3-base-ubi9
+
+      - name: k8s-device-plugin
+        run: docker pull nvcr.io/nvidia/k8s-device-plugin:v0.17.0 && \
+        docker tag nvcr.io/nvidia/k8s-device-plugin:v0.17.0 registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-device-plugin-v0.17.0 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-device-plugin-v0.17.0
+
+      - name: dcgm-exporter
+        run: docker pull nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 && \
+        docker tag nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04
 
       - name: Image push success
         run: echo "Docker image pushed successfully to ghcr.io/${{ github.repository }}:v24.9.2"

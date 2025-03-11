@@ -9,3 +9,20 @@ git fetch upstream
 
 git merge v24.9.2
 ```
+
+## charts
+
+```bash
+# 1. Package
+helm package ./deployments/gpu-operator && \ 
+mv gpu-operator-v1.0.0-devel.tgz bin/gpu-operator-v1.0.0-devel.tgz
+
+# 
+```
+
+## images
+
+```bash
+# https://catalog.ngc.nvidia.com/orgs/nvidia/teams/cloud-native/containers/gpu-operator-validator/tags
+nvcr.io/nvidia/cloud-native/gpu-operator-validator:v24.9.2
+```
