@@ -21,6 +21,7 @@ mv gpu-operator-v1.0.0-devel.tgz bin/gpu-operator-v1.0.0-devel.tgz
 helm install \
   --namespace=beagle-system \
   gpu-operator \
+  --version=v24.9.2 \
   /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.tgz \
   -f /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.yaml
 
@@ -28,6 +29,7 @@ helm install \
 helm upgrade \
   --namespace=beagle-system \
   gpu-operator \
+  --version=v24.9.2 \
   /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.tgz \
   -f /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.yaml
 

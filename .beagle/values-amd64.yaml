@@ -80,3 +80,8 @@ sandboxDevicePlugin:
 
 ccManager:
   enabled: false
+
+node-feature-discovery:
+  image:
+    repository: registry.k8s.io/nfd/node-feature-discovery
+    tag: v0.16.6

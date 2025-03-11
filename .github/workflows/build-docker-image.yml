@@ -82,6 +82,12 @@ jobs:
           docker tag nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04 && \
           docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04
           
+      - name: node-feature-discovery
+        run: |
+          docker pull registry.k8s.io/nfd/node-feature-discovery:v0.16.6 && \
+          docker tag registry.k8s.io/nfd/node-feature-discovery:v0.16.6 registry.cn-qingdao.aliyuncs.com/wod/nvidia:node-feature-discovery-v0.16.6 && \
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:node-feature-discovery-v0.16.6
+
       - name: k8s-driver-manager
         run: |
           docker pull nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.7.0 && \
