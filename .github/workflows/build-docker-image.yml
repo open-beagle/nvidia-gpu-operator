@@ -70,6 +70,24 @@ jobs:
           docker tag nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04 && \
           docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04
 
+      - name: container-toolkit
+        run: |
+          docker pull nvcr.io/nvidia/k8s/container-toolkit:v1.17.4-ubuntu20.04 && \
+          docker tag nvcr.io/nvidia/k8s/container-toolkit:v1.17.4-ubuntu20.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:container-toolkit-v1.17.4-ubuntu20.04 && \
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:container-toolkit-v1.17.4-ubuntu20.04
+
+      - name: driver
+        run: |
+          docker pull nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 && \
+          docker tag nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04 && \
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04
+          
+      - name: k8s-driver-manager
+        run: |
+          docker pull nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.7.0 && \
+          docker tag nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.7.0 registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-driver-manager-v0.7.0 && \
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-driver-manager-v0.7.0
+
       - name: k8s-device-plugin
         run: |
           docker pull nvcr.io/nvidia/k8s-device-plugin:v0.17.0 && \

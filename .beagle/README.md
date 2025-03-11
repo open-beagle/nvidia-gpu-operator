@@ -17,7 +17,24 @@ git merge v24.9.2
 helm package ./deployments/gpu-operator && \ 
 mv gpu-operator-v1.0.0-devel.tgz bin/gpu-operator-v1.0.0-devel.tgz
 
-# 
+# 2. Deploy
+helm install \
+  --namespace=beagle-system \
+  gpu-operator \
+  /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.tgz \
+  -f /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.yaml
+
+# 3. Upgrade
+helm upgrade \
+  --namespace=beagle-system \
+  gpu-operator \
+  /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.tgz \
+  -f /etc/kubernetes/charts/gpu-operator-v1.0.0-devel.yaml
+
+# 4. Uninstall
+helm uninstall \
+  --namespace=beagle-system \
+  gpu-operator
 ```
 
 ## images
