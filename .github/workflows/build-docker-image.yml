@@ -62,15 +62,20 @@ jobs:
         docker tag nvcr.io/nvidia/cuda:12.6.3-base-ubi9 registry.cn-qingdao.aliyuncs.com/wod/nvidia:cuda-12.6.3-base-ubi9 && \
         docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:cuda-12.6.3-base-ubi9
 
+      - name: dcgm-exporter
+        run: docker pull nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 && \
+        docker tag nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04
+
       - name: k8s-device-plugin
         run: docker pull nvcr.io/nvidia/k8s-device-plugin:v0.17.0 && \
         docker tag nvcr.io/nvidia/k8s-device-plugin:v0.17.0 registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-device-plugin-v0.17.0 && \
         docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-device-plugin-v0.17.0
 
-      - name: dcgm-exporter
-        run: docker pull nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 && \
-        docker tag nvcr.io/nvidia/k8s/dcgm-exporter:3.3.9-3.6.1-ubuntu22.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04 && \
-        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:dcgm-exporter-3.3.9-3.6.1-ubuntu22.04
+      - name: k8s-mig-manager
+        run: docker pull nvcr.io/nvidia/cloud-native/k8s-mig-manager:v0.10.0-ubuntu20.04 && \
+        docker tag nvcr.io/nvidia/cloud-native/k8s-mig-manager:v0.10.0-ubuntu20.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-mig-manager-v0.10.0-ubuntu20.04 && \
+        docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:k8s-mig-manager-v0.10.0-ubuntu20.04
 
       - name: Image push success
         run: echo "Docker image pushed successfully to ghcr.io/${{ github.repository }}:v24.9.2"

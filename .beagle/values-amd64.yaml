@@ -36,10 +36,16 @@ gfd:
   version: k8s-device-plugin-v0.17.0
 
 migManager:
-  enabled: false
+  enabled: true
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: k8s-mig-manager-v0.10.0-ubuntu20.04
 
 nodeStatusExporter:
-  enabled: false
+  enabled: true
+  repository: registry.cn-qingdao.aliyuncs.com/wod
+  image: nvidia
+  version: gpu-operator-validator-v24.9.2
 
 gds:
   enabled: false
