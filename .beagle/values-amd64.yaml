@@ -13,14 +13,15 @@ operator:
     version: cuda-12.6.3-base-ubi9
 
 driver:
-  enabled: true
+  enabled: false
   repository: registry.cn-qingdao.aliyuncs.com/wod
-  image: nvidia
-  version: "driver-570.124.06"
+  image: nvidia-driver
+  version: "570.124.06"
   manager:
     repository: registry.cn-qingdao.aliyuncs.com/wod
     image: nvidia
     version: k8s-driver-manager-v0.7.0
+    
 toolkit:
   enabled: true
   repository: registry.cn-qingdao.aliyuncs.com/wod
