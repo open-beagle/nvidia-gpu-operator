@@ -83,5 +83,5 @@ ccManager:
 
 node-feature-discovery:
   image:
-    repository: registry.k8s.io/nfd/node-feature-discovery
+    repository: registry.cn-qingdao.aliyuncs.com/wod/nvidia
     tag: v0.16.6
