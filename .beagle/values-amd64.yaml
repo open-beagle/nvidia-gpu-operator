@@ -16,7 +16,7 @@ driver:
   enabled: true
   repository: registry.cn-qingdao.aliyuncs.com/wod
   image: nvidia
-  version: "driver-570.124.06-ubuntu24.04"
+  version: "driver-570.124.06"
   manager:
     repository: registry.cn-qingdao.aliyuncs.com/wod
     image: nvidia
@@ -84,4 +84,4 @@ ccManager:
 node-feature-discovery:
   image:
     repository: registry.cn-qingdao.aliyuncs.com/wod/nvidia
-    tag: v0.16.6
+    tag: node-feature-discovery-v0.16.6

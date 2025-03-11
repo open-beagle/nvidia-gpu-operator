@@ -80,7 +80,9 @@ jobs:
         run: |
           docker pull nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 && \
           docker tag nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04 && \
-          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-ubuntu24.04 && \
+          docker tag nvcr.io/nvidia/driver:570.124.06-ubuntu24.04 registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-debian12 && \
+          docker push registry.cn-qingdao.aliyuncs.com/wod/nvidia:driver-570.124.06-debian12
           
       - name: node-feature-discovery
         run: |
