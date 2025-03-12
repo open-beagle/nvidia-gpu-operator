@@ -11,6 +11,11 @@ operator:
     repository: registry.cn-qingdao.aliyuncs.com/wod
     image: nvidia
     version: cuda-12.6.3-base-ubi9
+  resources:
+    limits:
+      memory: 350Mi
+    requests:
+      memory: 100Mi
 
 driver:
   enabled: false
@@ -21,7 +26,7 @@ driver:
     repository: registry.cn-qingdao.aliyuncs.com/wod
     image: nvidia
     version: k8s-driver-manager-v0.7.0
-    
+
 toolkit:
   enabled: true
   repository: registry.cn-qingdao.aliyuncs.com/wod
@@ -86,3 +91,25 @@ node-feature-discovery:
   image:
     repository: registry.cn-qingdao.aliyuncs.com/wod/nvidia
     tag: node-feature-discovery-v0.16.6
+  master:
+    resources:
+      limits:
+        memory: 4Gi
+      requests:
+        cpu: 0
+        memory: 128Mi
+  worker:
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 0
+        memory: 64Mi
+  gc:
+    resources:
+      limits:
+        memory: 1Gi
+      requests:
+        cpu: 0
+        memory: 128Mi
+        
