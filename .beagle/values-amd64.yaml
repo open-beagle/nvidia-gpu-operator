@@ -38,6 +38,84 @@ devicePlugin:
   repository: registry.cn-qingdao.aliyuncs.com/wod
   image: nvidia
   version: k8s-device-plugin-v0.17.0
+  config:
+    name: device-plugin-config
+    create: true
+    data:
+      default: |-
+        version: v1
+        flags:
+          migStrategy: none
+          failOnInitError: true
+          nvidiaDriverRoot: "/"
+          plugin:
+            passDeviceSpecs: false
+            deviceListStrategy: envvar
+            deviceIDStrategy: uuid
+      mig-single: |-
+        version: v1
+        flags:
+          migStrategy: single
+      mig-mixed: |-
+        version: v1
+        flags:
+          migStrategy: mixed
+      time-2: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 2
+      time-3: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 3
+      time-4: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 4
+      time-5: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 5
+      time-6: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 6
+      time-7: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 7
+      time-8: |-
+        version: v1
+        sharing:
+          renameByDefault: true
+          timeSlicing:
+            resources:
+            - name: nvidia.com/gpu
+              replicas: 8
 
 dcgmExporter:
   enabled: true
