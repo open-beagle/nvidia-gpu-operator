@@ -17,6 +17,17 @@ steps:
     commands:
     - cp .beagle/values-amd64.yaml ./deployments/gpu-operator/
     - helm package ./deployments/gpu-operator
+
+  - name: minio-charts
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-minio:1.0
+    environment:
+      S3_ACCESS_KEY:
+        from_secret: ACCESS_KEY_MINIO
+      S3_SECRET_KEY:
+        from_secret: SECRET_KEY_MINIO
+    commands:
+      - mc alias set aliyun --api=S3v4 https://cache.wodcloud.com $S3_ACCESS_KEY $S3_SECRET_KEY
+      - mc cp gpu-operator-v1.0.0-devel.tgz aliyun/kubernetes/cps/gpu-operator/gpu-operator-v1.0.0-devel.tgz
   
   - name: images-amd64
     image: registry.cn-qingdao.aliyuncs.com/wod/devops-docker-images:1.0
@@ -27,16 +38,15 @@ steps:
       group: wod
       release: .tmp/amd64/images-nvidia-gpu-operator-v1.0.0-devel.tgz
 
-  - name: minio
+  - name: minio-images
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod/devops-minio:1.0
     environment:
       S3_ACCESS_KEY:
-        from_secret: S3_ACCESS_KEY_ALIYUN
+        from_secret: ACCESS_KEY_MINIO
       S3_SECRET_KEY:
-        from_secret: S3_SECRET_KEY_ALIYUN
+        from_secret: SECRET_KEY_MINIO
     commands:
       - mc alias set aliyun --api=S3v4 https://cache.wodcloud.com $S3_ACCESS_KEY $S3_SECRET_KEY
-      - mc cp gpu-operator-v1.0.0-devel.tgz aliyun/kubernetes/cps/gpu-operator/gpu-operator-v1.0.0-devel.tgz
       - mc cp .tmp/amd64/images-nvidia-gpu-operator-v1.0.0-devel.tgz aliyun/kubernetes/cps/gpu-operator/images-nvidia-gpu-operator-v1.0.0-devel.tgz
 
 ---
@@ -62,14 +72,14 @@ get:
 
 ---
 kind: secret
-name: S3_ACCESS_KEY_ALIYUN
+name: ACCESS_KEY_MINIO
 get:
-  name: S3_ACCESS_KEY_ALIYUN
+  name: ACCESS_KEY_MINIO
   path: devops-secrets
 
 ---
 kind: secret
-name: S3_SECRET_KEY_ALIYUN
+name: SECRET_KEY_MINIO
 get:
-  name: S3_SECRET_KEY_ALIYUN
+  name: SECRET_KEY_MINIO
   path: devops-secrets
