@@ -1,9 +1,9 @@
 kind: pipeline
-name: main
+name: dev
 
 trigger:
   branch:
-    - main
+    - dev
 
 clone:
   disable: true
