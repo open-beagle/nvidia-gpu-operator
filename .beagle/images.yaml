@@ -1,0 +1,31 @@
+images:
+  validator:
+    NAME: "nvidia"
+    VERSION: "gpu-operator-validator-v24.9.2"
+  operator:
+    NAME: "nvidia"
+    VERSION: "gpu-operator-v24.9.2"
+  cuda-base:
+    NAME: "nvidia"
+    VERSION: "cuda-12.6.3-base-ubi9"
+  driver-manager:
+    NAME: "nvidia"
+    VERSION: "k8s-driver-manager-v0.7.0"
+  toolkit:
+    NAME: "nvidia"
+    VERSION: "container-toolkit-v1.17.4-ubuntu20.04"
+  device-plugin: ## gfd
+    NAME: "nvidia"
+    VERSION: "k8s-device-plugin-v0.17.0"
+  dcgm-exporter:
+    NAME: "nvidia"
+    VERSION: "dcgm-exporter-3.3.9-3.6.1-ubuntu22.04"
+  mig-manager:
+    NAME: "nvidia"
+    VERSION: "k8s-mig-manager-v0.10.0-ubuntu20.04"
+  node-status-exporter:
+    NAME: "nvidia"
+    VERSION: "gpu-operator-validator-v24.9.2"
+  node-feature-discovery:
+    NAME: "nvidia"
+    VERSION: "node-feature-discovery-v0.16.6"
