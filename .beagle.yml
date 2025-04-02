@@ -24,7 +24,6 @@ steps:
       source: registry.cn-qingdao.aliyuncs.com/wod
       yaml: .beagle/images.yaml
       image: images
-      arch: amd64
       group: wod
       release: .tmp/amd64/images-nvidia-gpu-operator-v1.0.0-devel.tgz
 
